@@ -43,12 +43,11 @@ public class ScrabbleTest {
         assertEquals(scrabble.score(), 22);
     }
 
-//    @Test
-//    @Disabled
-//    public void returnsScoreForCaseInsensitiveWord() {
-//        Scrabble scrabble = new Scrabble("OXYPHENBUTAZONE");
-//        assertEquals(scrabble.score(), 41);
-//    }
+    @Test
+    public void returnsScoreForCaseInsensitiveWord() {
+        Scrabble scrabble = new Scrabble("OXYPHENBUTAZONE");
+        assertEquals(scrabble.score(), 41);
+    }
 
 
 
