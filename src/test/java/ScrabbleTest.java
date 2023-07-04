@@ -12,14 +12,12 @@ public class ScrabbleTest {
         assertEquals(scrabble.score(), 0);
     }
 
+    @Test
+    public void returnsZeroForNull() {
+        Scrabble scrabble = new Scrabble(null);
+        assertEquals(scrabble.score(), 0);
+    }
 
-
-//    @Test
-//    @Disabled
-//    public void returnsZeroForNull() {
-//        Scrabble scrabble = new Scrabble(null);
-//        assertEquals(scrabble.score(), 0);
-//    }
 //
 //    @Test
 //    @Disabled
