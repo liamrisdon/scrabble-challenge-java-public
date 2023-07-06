@@ -36,9 +36,10 @@ public class Scrabble {
     }
 
     String word;
-    private int wordScore = 0;;
+    private int wordScore = 0;
     private boolean doubleWord;
     private boolean tripleWord;
+    private Character[] doubleLetter;
 
 
     public Scrabble(String newWord) {
@@ -49,6 +50,7 @@ public class Scrabble {
         word = newWord;
         this.doubleWord = doubleWord;
         this.tripleWord = tripleWord;
+        this.doubleLetter = doubleLetter;
     }
 
     public int score() {
@@ -56,7 +58,8 @@ public class Scrabble {
                 return 0;
             }
             wordScore += scoreCalculator(word);
-            doubleAndTripleCalculator();
+            doubleAndTripleWordCalculator();
+            applyDoubleLetterScore();
             return wordScore;
     }
 
@@ -68,13 +71,24 @@ public class Scrabble {
         return wordScore;
     }
 
-    private void doubleAndTripleCalculator() {
+    private void doubleAndTripleWordCalculator() {
         if(this.doubleWord) wordScore *= 2;
         if(this.tripleWord) wordScore *= 3;
     }
 
+    private void applyDoubleLetterScore() {
+        if (doubleLetter != null) {
+            for (char letter : doubleLetter) {
+                if (letterValue.containsKey(Character.toLowerCase(letter))) {
+                    wordScore += letterValue.get(Character.toLowerCase(letter));
+                }
+            }
+        }
+
+    }
 
 }
+
 
 
 

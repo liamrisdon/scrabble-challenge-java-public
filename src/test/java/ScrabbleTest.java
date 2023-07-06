@@ -65,19 +65,17 @@ public class ScrabbleTest {
     }
     // Scrabble (String, Character[] (double letters), Character[], boolean, boolean);
 
-//    @Test
-//    @Disabled
-//    public void returnsScoreForDoubleLetterWord() {
-//        Scrabble scrabble = new Scrabble("a", new Character[]{'A'}, new Character[]{}, false, false);
-//        assertEquals(scrabble.score(), 2);
-//    }
-//
-//    @Test
-//    @Disabled
-//    public void returnsScoreForDoubleLetterOnlyOnce() {
-//        Scrabble scrabble = new Scrabble("aa", new Character[]{'A'}, new Character[]{}, false, false);
-//        assertEquals(scrabble.score(), 3);
-//    }
+    @Test
+    public void returnsScoreForDoubleLetterWord() {
+        Scrabble scrabble = new Scrabble("a", new Character[]{'A'}, new Character[]{}, false, false);
+        assertEquals(scrabble.score(), 2);
+    }
+
+    @Test
+    public void returnsScoreForDoubleLetterOnlyOnce() {
+        Scrabble scrabble = new Scrabble("aa", new Character[]{'A'}, new Character[]{}, false, false);
+        assertEquals(scrabble.score(), 3);
+    }
 //
 //    @Test
 //    @Disabled
