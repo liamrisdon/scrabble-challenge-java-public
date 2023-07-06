@@ -36,23 +36,37 @@ public class Scrabble {
     }
 
     String word;
+    private int wordScore = 0;
+
 
     public Scrabble(String newWord) {
         word = newWord;
     }
+
+    public Scrabble(String newWord, Character[] doubleLetter, Character[] TripleLetter, boolean doubleWord, boolean tripleWord) {
+        word = newWord;
+    }
+
+
+
     public int score() {
-        if(word == null || word.isEmpty()) {
-            return 0;
+            if (word == null || word.isEmpty()) {
+                return 0;
+            }
+           return wordScore += scoreCalculator(word);
+
         }
 
-        int score = 0;
+    private int scoreCalculator(String word) {
         word = word.toLowerCase();
         for (int i = 0; i < word.length(); i++) {
-            score += letterValue.get(word.charAt(i));
+            wordScore += letterValue.get(word.charAt(i));
         }
-            return score;
-        }
-
+        return wordScore;
     }
+
+
+}
+
 
 
