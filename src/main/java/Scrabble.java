@@ -35,7 +35,7 @@ public class Scrabble {
 
     }
 
-    String word;
+    private String word;
     private int wordScore = 0;
     private boolean doubleWord;
     private boolean tripleWord;
@@ -56,17 +56,17 @@ public class Scrabble {
     }
 
     public int score() {
-            if (word == null || word.isEmpty()) {
-                return 0;
-            }
-            wordScore += scoreCalculator(word);
-            doubleAndTripleWordCalculator();
-            applyDoubleLetterScore();
-            applyTripleLetterScore();
-            return wordScore;
+        return (word == null || word.isEmpty()) ? 0 : scoreCalculator();
     }
 
-    private int scoreCalculator(String word) {
+    private int scoreCalculator() {
+        wordScore += wordScoreCalculator(word);
+        doubleAndTripleWordCalculator();
+        doubleTripleLetterValidator();
+        return wordScore;
+    }
+
+    private int wordScoreCalculator(String word) {
         word = word.toLowerCase();
         for (int i = 0; i < word.length(); i++) {
             wordScore += letterValue.get(word.charAt(i));
@@ -79,23 +79,25 @@ public class Scrabble {
         if(this.tripleWord) wordScore *= 3;
     }
 
+
+    private void doubleTripleLetterValidator() {
+        if (doubleLetter != null) applyDoubleLetterScore();
+        if (tripleLetter != null) applyTripleLetterScore();
+    }
+
     private void applyDoubleLetterScore() {
-        if (doubleLetter != null) {
             for (char letter : doubleLetter) {
                     wordScore += letterValue.get(Character.toLowerCase(letter));
                 }
-            }
         }
 
     private void applyTripleLetterScore() {
-        if (tripleLetter != null) {
             for (char letter : tripleLetter) {
                 wordScore += letterValue.get(Character.toLowerCase(letter)) * 2;
             }
-        }
     }
 
-    }
+}
 
 
 
